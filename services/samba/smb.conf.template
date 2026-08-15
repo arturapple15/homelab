@@ -1,0 +1,19 @@
+[global]
+   workgroup = WORKGROUP
+   server string = Homelab Samba %v
+   security = user
+   map to guest = Bad User
+   log file = /var/log/samba/log.%m
+   max log size = 1000
+   logging = file
+
+[Share]
+   path = /srv/samba/share
+   browseable = yes
+   read only = no
+   guest ok = no
+   valid users = smbuser
+   force user = smbuser
+   create mask = 0660
+   directory mask = 2770
+
