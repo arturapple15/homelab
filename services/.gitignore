@@ -1,1 +1,4 @@
-../minecraft/.env
+.env
+*.env
+*.log
+**/data/
