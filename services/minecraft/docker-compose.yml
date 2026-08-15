@@ -1,0 +1,25 @@
+version: '3.8'
+
+networks:
+  homelab_net:
+    external: true
+
+services:
+  minecraft:
+    image: itzg/minecraft-server:latest
+    container_name: minecraft_forge
+    restart: unless-stopped
+    ports:
+      - "25565:25565"
+      - "24454:24454/udp"
+    environment:
+      EULA: "TRUE"
+      TYPE: "FORGE"
+      VERSION: "1.20.1"
+      FORGE_VERSION: "LATEST"
+      MEMORY: "4G"
+      ENABLE_WHITELIST: "TRUE"
+    volumes:
+      - ${MC_DATA_PATH}:/data
+    networks:
+      - homelab_net
