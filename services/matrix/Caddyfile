@@ -1,0 +1,19 @@
+{$MATRIX_DOMAIN} {
+    header -Server
+
+    handle /.well-known/matrix/client {
+        header Content-Type "application/json"
+        respond `{"m.homeserver": {"base_url": "https://{$MATRIX_DOMAIN}"}}` 200
+    }
+
+    @root {
+        path /
+    }
+    handle @root {
+        header Content-Type "text/html; charset=utf-8"
+        respond "Welcome to Matrix!" 200
+    }
+
+    reverse_proxy synapse:8008
+}
+
