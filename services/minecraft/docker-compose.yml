@@ -24,3 +24,4 @@ services:
     networks:
       - homelab_net
 
+
